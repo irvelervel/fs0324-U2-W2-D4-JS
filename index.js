@@ -142,3 +142,133 @@ anotherObjA.verso = 'Miao'
 console.log(anotherObjB.verso) // ? 'bau'?
 
 // const utilizzato per funzioni, oggetti e array?
+
+// LOGICA CONDIZIONALE
+// IF/ELSE
+
+let cartTotal = 40
+
+const shippingCost = 5
+
+const freeShippingThreshold = 50
+
+let totalToPay // ?
+
+// if(cartTotal >= freeShippingThreshold) {
+//     totalToPay = cartTotal
+// } else {
+//     totalToPay = cartTotal + shippingCost
+// }
+
+// totalToPay = 45
+
+// ternary operator
+totalToPay =
+  cartTotal >= freeShippingThreshold ? cartTotal : cartTotal + shippingCost
+
+// condizione ? se sì : se no
+
+// C I C L I
+// un ciclo è una direttiva che permette di eseguire una porzione di codice un numero determinato/indeterminato di volte
+
+// for -> esegue un blocco di istruzioni un numero FINITO e PREFISSATO di volte
+// while -> esegue un blocco di istruzioni un numero NON-PREFISSATO di volte (potenzialmente addirittura infinite... :( )
+
+for (let i = 0; i < 10; i++) {
+  // questo ciclo verrà eseguito 10 volte, con i che varierà da 0 a 9
+  console.log('ciaone!')
+  // la i vale 0 al primo ciclo
+  // la i vale 1 al secondo ciclo
+  // la i vale 2 al terzo ciclo
+  // la i vale 3 al quarto ciclo
+  // ...
+  // la i vale 9 al decimo ciclo
+  // i diventa 10 -> si esce dal ciclo
+}
+
+const testArray = ['davide', 'francesco', 'giampaolo', 'manuel']
+
+for (let i = 0; i < testArray.length; i++) {
+  console.log(testArray[i])
+}
+
+// un modo moderno per fare un ciclo for è il metodo degli array chiamato forEach()
+testArray.forEach(function (element, i, array) {
+  console.log('ciaone di nuovo!', element, i, array)
+})
+
+// il metodo .map() TRASFORMA un array in un altro array -> ['d', 'f', 'g', 'm']
+const newArray = testArray.map(function (element, i, array) {
+  return element.slice(0, 1)
+})
+
+console.log(newArray)
+
+// il metodo .filter() crea un nuovo array FILTRANDO i contenuti dell'originale
+const filteredArray = testArray.filter(function (element, i, array) {
+  return element.slice(-1) === 'o'
+})
+console.log(filteredArray)
+// ['francesco', 'giampaolo']
+
+// FUNZIONI
+// una funzione è un blocco di codice riutilizzabile.
+
+const myFunction = () => {
+  console.log('sono una funzione! bau!', this)
+}
+
+myFunction()
+
+const arrowFunction = () => {
+  // le funzioni freccia NON effettuano automaticamente un "binding" con direttive come super, this, etc.
+}
+
+const arr = [1, 2, 3]
+
+arr.forEach((n) => {
+  console.log(n)
+})
+
+const sum = function (num1, num2 = 0) {
+  const result = num1 + num2
+  console.log(result)
+}
+
+sum(4, 5)
+sum(44, 523)
+
+sum(50)
+
+// VALORI DI RITORNO DELLE FUNZIONI
+const product = function (n1, n2) {
+  const result = n1 * n2
+  return result
+}
+
+const w = product(2, 2) // 4
+console.log(w)
+
+console.log(typeof product(2, 2)) // number
+
+// funzione che sottrae due numeri
+const subtract = function (n1, n2) {
+  return n1 - n2
+}
+
+const add100 = function (val) {
+  return val + 100
+}
+
+const myValue1 = 50
+const myValue2 = 27
+
+// const firstResult = subtract(myValue1, myValue2) // firstResult vale 23
+// const finalResult = add100(firstResult)
+//
+const finalResult = add100(subtract(myValue1, myValue2))
+console.log(finalResult) // 123
+
+const add100WithArrow = (val) => val + 100 // questa funzione RITORNA val + 100
+// le funzioni freccia ritornano implicitamente un valore (hanno un return implicito) se NON mettete le graffe
+// e se NON scrivete la parola return
